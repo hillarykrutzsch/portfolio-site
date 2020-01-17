@@ -3,9 +3,11 @@ import React from 'react';
 
 const Nav = () => (
     <nav>
-        <li>Item 1</li>
-        <li>Item 2</li>
-        <li>Item 3</li>
+        <ul>
+            <li><a href="">projects</a></li>
+            <li><a href="">about</a></li>
+            <li><a href="">contact</a></li>
+        </ul>
     </nav>
 )
 
