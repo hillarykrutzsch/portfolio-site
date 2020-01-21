@@ -106,6 +106,38 @@ class App extends React.Component{
                         require('../assets/project_images/samsung/samsung3.jpg'),
                         
                     ]
+                },
+                {
+                    projectName: 'LA Gay and Lesbian Center - An Evening With Womem',
+                    projectGridDescription: 'Charity Event HTML Website',
+                    projectDetailDescription: '',
+                    projectThumbnail: require('../assets/project_thumbnails/aeww.jpg'),
+                    images: [
+                        require('../assets/project_images/aeww/aeww.jpg')]
+                },
+                {
+                    projectName: 'Estelle Leeds - Artist Management',
+                    projectGridDescription: 'Website managed in Joomla',
+                    projectDetailDescription: '',
+                    projectThumbnail: require('../assets/project_thumbnails/estelle.jpg'),
+                    images: [
+                        require('../assets/project_images/estelle/estelle.jpg')]
+                },
+                {
+                    projectName: 'Diane Maire Photography',
+                    projectGridDescription: 'Portfolio HTML Website',
+                    projectDetailDescription: '',
+                    projectThumbnail: require('../assets/project_thumbnails/dianamaire.jpg'),
+                    images: [
+                        require('../assets/project_images/dianamaire/dianamaire.jpg')]
+                },
+                {
+                    projectName: 'Muse Hairdressing',
+                    projectGridDescription: 'HTML Website',
+                    projectDetailDescription: '',
+                    projectThumbnail: require('../assets/project_thumbnails/muse.jpg'),
+                    images: [
+                        require('../assets/project_images/muse/muse1.jpg')]
                 }
             ]
         }
