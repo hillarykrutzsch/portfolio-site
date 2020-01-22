@@ -1,0 +1,28 @@
+@import '../assets/css/variables.scss';
+
+.wrapper{
+    padding:60px 0;
+    h1{
+        color:$teal-blue;
+        text-transform: uppercase;
+        text-align:center;
+    }
+    .skills-columns{
+        display:grid;
+        width:70%;
+        margin:30px auto;
+        grid-template-columns: 1fr 1fr;
+        .skills-column{
+            ul{
+                margin:0;
+                li{
+                    margin-left:40px;
+                    margin-bottom:10px;
+                }
+            }
+            &:first-child{
+                border-right:1px solid $teal-blue;
+            }
+        }
+    }
+}

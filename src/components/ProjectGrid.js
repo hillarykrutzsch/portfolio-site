@@ -15,6 +15,7 @@ class ProjectGrid extends React.Component{
         ));
         return (
             <main>
+                <h1>Projects</h1>
                 <div className="project-grid">
                     {projects}
                 </div>

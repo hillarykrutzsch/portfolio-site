@@ -1,0 +1,15 @@
+@import '../assets/css/variables.scss';
+
+
+footer{
+    background-color: black;
+    color:$gray;
+    text-align:center;
+    .wrapper{
+        padding:0;
+        p{
+            padding:16px;
+            text-align:center;
+        }
+    }
+}

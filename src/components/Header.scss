@@ -1,25 +1,46 @@
+@import '../assets/css/variables.scss';
+
 header{
-    text-align:center;
-    display:flex;
-    justify-content:space-between;
-    nav{
-        ul{
-            display:flex;
-            justify-content: center;
-            list-style-type: none;
-            margin:0;
-            padding:0;
-            li{
-                padding:1em;
-                a{
-                    color:black;
-                    text-decoration: none;
-                    &:hover{
-                        color:yellow;
+    background-color:black;
+    box-shadow:0px 2px 5px rgba(black, 0.2);
+    background: url(../assets/css/images/NoToPencil_01.gif) repeat;
+    position: relative;
+    z-index:2;
+    padding-bottom:50px;
+    .wrapper{
+        text-align:center;
+        display:flex;
+        justify-content:space-between;
+        padding:10px 0;
+        .logo{
+            img{
+                width:500px;
+            }
+            
+        }
+        nav{
+            align-self:flex-end;
+            ul{
+                display:flex;
+                justify-content: center;
+                list-style-type: none;
+                margin:0;
+                padding:0;
+                li{
+                    padding:1em;
+                    a{
+                        color:$teal-blue;
+                        text-decoration: none;
+                        text-transform: uppercase;
+                        letter-spacing:1.17px;
+                        font-weight:700;
+                        &:hover{
+                            color:yellow;
+                        }
                     }
                 }
             }
+            
         }
-        
     }
 }

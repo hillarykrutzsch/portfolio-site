@@ -1,6 +1,7 @@
 .project-grid{
     display:grid;
     grid-template-columns:1fr 1fr 1fr;
+    grid-gap:16px;
     margin-top:40px;
     .project-grid-item{
         position:relative;
@@ -21,7 +22,7 @@
             color:white;
             padding:20px;
             box-sizing: border-box;
-            background-color:rgba(#aaa, 0.4);
+            background-color:rgba(black, 0.6);
             h5{
                 font-size:20px;
                 line-height:1.4em;
