@@ -28,12 +28,18 @@ header{
                 padding:0;
                 li{
                     padding:1em;
-                    a{
+                    button{
+                        background-color: transparent;
+                        border:none;
+                        padding:0;
+                        margin:0;
                         color:$teal-blue;
                         text-decoration: none;
                         text-transform: uppercase;
                         letter-spacing:1.17px;
                         font-weight:700;
+                        font-size:18px;
+                        cursor:pointer;
                         &:hover{
                             color:yellow;
                         }

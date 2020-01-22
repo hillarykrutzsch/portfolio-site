@@ -1,12 +1,12 @@
 
 import React from 'react';
 
-const Nav = () => (
+const Nav = (props) => (
     <nav>
         <ul>
-            <li><a href="">projects</a></li>
-            <li><a href="">skills</a></li>
-            <li><a href="">about</a></li>
+            <li><button onClick={()=>props.scrollTo('projects')}>projects</button></li>
+            <li><button onClick={()=>props.scrollTo('skills')}>skills</button></li>
+            <li><button onClick={()=>props.scrollTo('contact')}>contact</button></li>
         </ul>
     </nav>
 )

@@ -2,9 +2,10 @@ import React from 'react';
 import Header from './Header';
 import ProjectGrid from './ProjectGrid';
 import Skills from './Skills';
-import About from './About';
+import Contact from './Contact';
 import Footer from './Footer';
 import ProjectModal from './ProjectModal';
+import smoothscroll from 'smoothscroll-polyfill';
 import "./App.scss";
 
 class App extends React.Component{
@@ -12,10 +13,19 @@ class App extends React.Component{
     
     constructor(props){
         super(props);
+        smoothscroll.polyfill();
+        this.refProjects = React.createRef();  
+        this.refSkills = React.createRef();  
+        this.refContact = React.createRef();  
         this.state = {
             currProjectID: '',
             modalOpen:false,
             currentProject: null,
+            refs: {
+                'projects': this.refProjects,
+                'skills': this.refSkills,
+                'contact': this.refContact
+            },
             projects: [
                 {
                     projectID:'ss',
@@ -145,6 +155,51 @@ class App extends React.Component{
                     ]
                 },
                 {
+                    projectID:'la',
+                    projectName: 'LA Gay and Lesbian Center - An Evening With Women',
+                    projectGridDescription: 'Charity Event HTML Website',
+                    projectDetailDescription: 'Charity Event HTML Website',
+                    projectThumbnail: require('../assets/project_thumbnails/aeww.jpg'),
+                    images: [
+                        require('../assets/project_images/aeww/aeww.jpg')]
+                },
+                {
+                    projectID:'el',
+                    projectName: 'Estelle Leeds - Artist Management',
+                    projectGridDescription: 'Website managed in Joomla',
+                    projectDetailDescription: 'Website managed in Joomla',
+                    projectThumbnail: require('../assets/project_thumbnails/estelle.jpg'),
+                    images: [
+                        require('../assets/project_images/estelle/estelle.jpg')]
+                },
+                {
+                    projectID:'dm',
+                    projectName: 'Diane Maire Photography',
+                    projectGridDescription: 'Portfolio HTML Website',
+                    projectDetailDescription: 'Portfolio HTML Website',
+                    projectThumbnail: require('../assets/project_thumbnails/dianamaire.jpg'),
+                    images: [
+                        require('../assets/project_images/dianamaire/dianamaire.jpg')]
+                },
+                {
+                    projectID:'mh',
+                    projectName: 'Muse Hairdressing',
+                    projectGridDescription: 'HTML Website',
+                    projectDetailDescription: 'HTML Website',
+                    projectThumbnail: require('../assets/project_thumbnails/muse.jpg'),
+                    images: [
+                        require('../assets/project_images/muse/muse1.jpg')]
+                },
+                {
+                    projectID:'em',
+                    projectName: 'El Monte Collision Center',
+                    projectGridDescription: 'Flash Website',
+                    projectDetailDescription: 'Flash Website',
+                    projectThumbnail: require('../assets/project_thumbnails/elmonte.jpg'),
+                    images: [
+                        require('../assets/project_images/elmonte/elmonte.jpg')]
+                },
+                {
                     projectID:'cs',
                     projectName: 'Cisco',
                     projectGridDescription: 'Cisco homepage flash banner and internal tools',
@@ -166,55 +221,10 @@ class App extends React.Component{
                     ]
                 },
                 {
-                    projectID:'la',
-                    projectName: 'LA Gay and Lesbian Center - An Evening With Womem',
-                    projectGridDescription: 'Charity Event HTML Website',
-                    projectDetailDescription: '',
-                    projectThumbnail: require('../assets/project_thumbnails/aeww.jpg'),
-                    images: [
-                        require('../assets/project_images/aeww/aeww.jpg')]
-                },
-                {
-                    projectID:'el',
-                    projectName: 'Estelle Leeds - Artist Management',
-                    projectGridDescription: 'Website managed in Joomla',
-                    projectDetailDescription: '',
-                    projectThumbnail: require('../assets/project_thumbnails/estelle.jpg'),
-                    images: [
-                        require('../assets/project_images/estelle/estelle.jpg')]
-                },
-                {
-                    projectID:'dm',
-                    projectName: 'Diane Maire Photography',
-                    projectGridDescription: 'Portfolio HTML Website',
-                    projectDetailDescription: '',
-                    projectThumbnail: require('../assets/project_thumbnails/dianamaire.jpg'),
-                    images: [
-                        require('../assets/project_images/dianamaire/dianamaire.jpg')]
-                },
-                {
-                    projectID:'mh',
-                    projectName: 'Muse Hairdressing',
-                    projectGridDescription: 'HTML Website',
-                    projectDetailDescription: '',
-                    projectThumbnail: require('../assets/project_thumbnails/muse.jpg'),
-                    images: [
-                        require('../assets/project_images/muse/muse1.jpg')]
-                },
-                {
-                    projectID:'em',
-                    projectName: 'El Monte Collision Center',
-                    projectGridDescription: 'Flash Website',
-                    projectDetailDescription: '',
-                    projectThumbnail: require('../assets/project_thumbnails/elmonte.jpg'),
-                    images: [
-                        require('../assets/project_images/elmonte/elmonte.jpg')]
-                },
-                {
                     projectID:'bn',
                     projectName: 'Flash and HTML5 Banners',
                     projectGridDescription: 'Various Flash and HTML5 banners for Aruba, GOOD, Adaptive Insights',
-                    projectDetailDescription: '',
+                    projectDetailDescription: 'Various Flash and HTML5 banners for Aruba, GOOD, Adaptive Insights',
                     projectThumbnail: require('../assets/project_thumbnails/good.jpg'),
                     images: [
                         require('../assets/project_images/banners/good.jpg'),
@@ -226,7 +236,7 @@ class App extends React.Component{
                     projectID:'ga',
                     projectName: 'Flash ad games',
                     projectGridDescription: 'Various Flash and HTML5 games for Florida\'s Natural, Jack in the Box, CA Milk, and Mott\'s',
-                    projectDetailDescription: '',
+                    projectDetailDescription: 'Various Flash and HTML5 games for Florida\'s Natural, Jack in the Box, CA Milk, and Mott\'s',
                     projectThumbnail: require('../assets/project_thumbnails/milkswap.jpg'),
                     images: [
                         require('../assets/project_images/games/florida.jpg'),
@@ -237,8 +247,8 @@ class App extends React.Component{
                 {
                     projectID:'hh',
                     projectName: 'Honeys Getting Hitched',
-                    projectGridDescription: 'Wedding Website',
-                    projectDetailDescription: '',
+                    projectGridDescription: 'HTML Wedding Website',
+                    projectDetailDescription: 'HTML Wedding Website',
                     projectThumbnail: require('../assets/project_thumbnails/honeys.jpg'),
                     images: [
                         require('../assets/project_images/honeys/honeys.jpg')]
@@ -277,7 +287,6 @@ class App extends React.Component{
     closeProject = (e) => {
         e.preventDefault();
         document.body.style.overflow = "auto";
-        console.log('getting close event');
         this.setState({
             currProjectID: '',
             modalOpen:false,
@@ -285,11 +294,16 @@ class App extends React.Component{
         });
     }
 
+    scrollToRef = (page) => {
+        let ref = this.state.refs[page];
+        ref.current.scrollIntoView({behavior: 'smooth'});
+    }
+
     render(){
         return (
             <div>
                 <div className="site-container">
-                    <Header />
+                    <Header scrollTo={this.scrollToRef} />
                     {/*
                     <div className="hero">
                         <div className="wrapper">
@@ -297,9 +311,9 @@ class App extends React.Component{
                         </div>
                     </div>
                     */}
-                    <ProjectGrid projects={this.state.projects} openProject={this.openProject} />
-                    <Skills />
-                    <About />
+                    <ProjectGrid thisRef={this.refProjects} projects={this.state.projects} openProject={this.openProject} />
+                    <Skills thisRef={this.refSkills} />
+                    <Contact thisRef={this.refContact} />
                     <Footer />
                 </div>
                 {this.state.modalOpen ? (<ProjectModal closeProject={this.closeProject} currentProject={this.state.currentProject} />):''}

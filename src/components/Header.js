@@ -4,11 +4,11 @@ import Logo from './Logo';
 import Nav from './Nav';
 import './Header.scss';
 
-const Header = () => (
+const Header = (props) => (
     <header>
         <div className="wrapper">
             <Logo />
-            <Nav />
+            <Nav scrollTo={props.scrollTo} />
         </div>
     </header>
 )
