@@ -4,14 +4,21 @@ import ProjectGrid from './ProjectGrid';
 import Skills from './Skills';
 import About from './About';
 import Footer from './Footer';
+import ProjectModal from './ProjectModal';
 import "./App.scss";
 
 class App extends React.Component{
+
+    
     constructor(props){
         super(props);
         this.state = {
+            currProjectID: '',
+            modalOpen:false,
+            currentProject: null,
             projects: [
                 {
+                    projectID:'ss',
                     projectName: 'Seed&Spark',
                     projectGridDescription: 'Crowdfunding and streaming platform',
                     projectDetailDescription: (
@@ -34,6 +41,7 @@ class App extends React.Component{
                     ]
                 },
                 {
+                    projectID:'pm',
                     projectName: 'Paul Mitchell Interactive Pods',
                     projectGridDescription: 'Interactive AIR Application',
                     projectDetailDescription: (
@@ -58,6 +66,7 @@ class App extends React.Component{
                     ]
                 },
                 {
+                    projectID:'mf',
                     projectName: 'Mo-Fi Headphones: Mobile Site',
                     projectGridDescription: 'Responsive mobile website',
                     projectDetailDescription: (
@@ -75,6 +84,7 @@ class App extends React.Component{
                     ]
                 },
                 {
+                    projectID:'jw',
                     projectName: 'John Wick Theatrical Website',
                     projectGridDescription: 'Interactive AIR Application',
                     projectDetailDescription: (
@@ -92,6 +102,7 @@ class App extends React.Component{
                     ]
                 },
                 {
+                    projectID:'td',
                     projectName: 'NYT Paid Post Ad for TD Ameritrade',
                     projectGridDescription: 'Parallax/animated landing page',
                     projectDetailDescription: (
@@ -110,6 +121,7 @@ class App extends React.Component{
                     ]
                 },
                 {
+                    projectID:'sg',
                     projectName: 'Samsung Galaxy Gesture Wall',
                     projectGridDescription: 'Interactive AIR Mobile Application',
                     projectDetailDescription: (
@@ -133,7 +145,8 @@ class App extends React.Component{
                     ]
                 },
                 {
-                    projectName: 'Cisco.com',
+                    projectID:'cs',
+                    projectName: 'Cisco',
                     projectGridDescription: 'Cisco homepage flash banner and internal tools',
                     projectDetailDescription: (
                         <div>
@@ -153,6 +166,7 @@ class App extends React.Component{
                     ]
                 },
                 {
+                    projectID:'la',
                     projectName: 'LA Gay and Lesbian Center - An Evening With Womem',
                     projectGridDescription: 'Charity Event HTML Website',
                     projectDetailDescription: '',
@@ -161,6 +175,7 @@ class App extends React.Component{
                         require('../assets/project_images/aeww/aeww.jpg')]
                 },
                 {
+                    projectID:'el',
                     projectName: 'Estelle Leeds - Artist Management',
                     projectGridDescription: 'Website managed in Joomla',
                     projectDetailDescription: '',
@@ -169,6 +184,7 @@ class App extends React.Component{
                         require('../assets/project_images/estelle/estelle.jpg')]
                 },
                 {
+                    projectID:'dm',
                     projectName: 'Diane Maire Photography',
                     projectGridDescription: 'Portfolio HTML Website',
                     projectDetailDescription: '',
@@ -177,6 +193,7 @@ class App extends React.Component{
                         require('../assets/project_images/dianamaire/dianamaire.jpg')]
                 },
                 {
+                    projectID:'mh',
                     projectName: 'Muse Hairdressing',
                     projectGridDescription: 'HTML Website',
                     projectDetailDescription: '',
@@ -185,6 +202,7 @@ class App extends React.Component{
                         require('../assets/project_images/muse/muse1.jpg')]
                 },
                 {
+                    projectID:'em',
                     projectName: 'El Monte Collision Center',
                     projectGridDescription: 'Flash Website',
                     projectDetailDescription: '',
@@ -193,6 +211,7 @@ class App extends React.Component{
                         require('../assets/project_images/elmonte/elmonte.jpg')]
                 },
                 {
+                    projectID:'bn',
                     projectName: 'Flash and HTML5 Banners',
                     projectGridDescription: 'Various Flash and HTML5 banners for Aruba, GOOD, Adaptive Insights',
                     projectDetailDescription: '',
@@ -204,6 +223,7 @@ class App extends React.Component{
                         require('../assets/project_images/banners/aruba2.jpg')]
                 },
                 {
+                    projectID:'ga',
                     projectName: 'Flash ad games',
                     projectGridDescription: 'Various Flash and HTML5 games for Florida\'s Natural, Jack in the Box, CA Milk, and Mott\'s',
                     projectDetailDescription: '',
@@ -215,6 +235,7 @@ class App extends React.Component{
                         require('../assets/project_images/games/motts.jpg')]
                 },
                 {
+                    projectID:'hh',
                     projectName: 'Honeys Getting Hitched',
                     projectGridDescription: 'Wedding Website',
                     projectDetailDescription: '',
@@ -226,21 +247,62 @@ class App extends React.Component{
         }
     }
 
+    componentDidMount() {
+        this.state.projects.forEach((project) => {
+            project.images.forEach((image) => {
+                const img = new Image();
+                img.src = image;
+            });
+        });
+    }
+
+    openProject = (projectID) => {
+        //set currProjectID
+        //set modalOpen
+        document.body.style.overflow = "hidden";
+
+        let currentProject = this.state.projects.filter((project) => {
+            if(project.projectID === projectID){
+                return project;
+            }
+        });
+        
+        this.setState({
+            currProjectID: projectID,
+            modalOpen:true,
+            currentProject
+        });
+    }
+
+    closeProject = (e) => {
+        e.preventDefault();
+        document.body.style.overflow = "auto";
+        console.log('getting close event');
+        this.setState({
+            currProjectID: '',
+            modalOpen:false,
+            currentProject: null
+        });
+    }
+
     render(){
         return (
-            <div className="site-container">
-                <Header />
-                {/*
-                <div className="hero">
-                    <div className="wrapper">
-                        <h1>Front End Web Development</h1>
+            <div>
+                <div className="site-container">
+                    <Header />
+                    {/*
+                    <div className="hero">
+                        <div className="wrapper">
+                            <h1>Front End Web Development</h1>
+                        </div>
                     </div>
+                    */}
+                    <ProjectGrid projects={this.state.projects} openProject={this.openProject} />
+                    <Skills />
+                    <About />
+                    <Footer />
                 </div>
-                */}
-                <ProjectGrid projects={this.state.projects} />
-                <Skills />
-                <About />
-                <Footer />
+                {this.state.modalOpen ? (<ProjectModal closeProject={this.closeProject} currentProject={this.state.currentProject} />):''}
             </div>
             
         );
