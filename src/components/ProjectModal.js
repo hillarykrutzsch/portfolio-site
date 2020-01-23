@@ -5,9 +5,7 @@ import { Scrollbars } from 'react-custom-scrollbars';
 class ProjectModal extends React.Component{
 
     renderThumb = ({ style, ...props }) => {
-        const thumbStyle = {
-            backgroundColor: `white`
-        };
+        const thumbStyle = {backgroundColor: 'white'};
         return (
             <div
                 style={{ ...style, ...thumbStyle }}
@@ -35,7 +33,7 @@ class ProjectModal extends React.Component{
                         <div className="images-container">
                             {projectImages}
                         </div>
-                    </Scrollbars>    
+                    </Scrollbars>
                 </div>
             </div>
         );

@@ -2,7 +2,7 @@
     display:grid;
     grid-template-columns:1fr 1fr 1fr;
     grid-gap:16px;
-    margin-top:40px;
+    margin-top:20px;
     .project-grid-item{
         position:relative;
         cursor:pointer;
@@ -39,5 +39,13 @@
             } 
         }
         
+    }
+    @media(max-width:768px){
+        margin-top:10px;
+        grid-template-columns:1fr 1fr;
+    }
+
+    @media(max-width:480px){
+        grid-template-columns:1fr;
     }
 }

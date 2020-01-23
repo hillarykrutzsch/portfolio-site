@@ -4,7 +4,7 @@ import "./Skills.scss";
 class Skills extends React.Component {
     render(){
         return (
-            <div className="wrapper" ref={this.props.thisRef}>
+            <div className="skills wrapper" ref={this.props.thisRef}>
                 <h1>Skills</h1>
                 <div className="skills-columns">
                     <div className="skills-column">
